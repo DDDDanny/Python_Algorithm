@@ -2,7 +2,7 @@
 # @Time    : 2019/4/3 22:00
 # @Author  : DannyDong
 # @File    : double_linked_list.py
-# @describe: 双向循环链表练习
+# @describe: 双向循环链表
 
 
 # 节点类

@@ -2,7 +2,7 @@
 # @Time    : 2019/4/1 21:22
 # @Author  : DannyDong
 # @File    : linked_list.py
-# @describe: 单链表练习
+# @describe: 单链表
 
 
 # 节点类
@@ -65,7 +65,7 @@ class LinkList(object):
         if cur_node.next_node is None:
             yield cur_node
 
-    # 在任意位置插入节点
+    # 在任意位置插入节点(根据data确定位置)
     def insert(self, location, data):
         node = Node(data)
         if self.length == 0:
@@ -73,15 +73,35 @@ class LinkList(object):
             self.length += 1
             return True
         else:
-            for index in self.iter_node():
-                if index.data == location:
-                    temp = index.next_node
-                    index.next_node = node
+            for cur_node in self.iter_node():
+                if cur_node.data == location:
+                    temp = cur_node.next_node
+                    cur_node.next_node = node
                     node.next_node = temp
                     self.length += 1
                     return True
 
-    # 删除任意节点
+    # 在任意位置插入节点(根据索引index确定位置)
+    def insert_index(self, index, data):
+        if self.length < index:
+            raise Exception('index error')
+        node = Node(data)
+        if self.length == 0:
+            self.head.next_node = node
+            self.length += 1
+            return True
+        else:
+            index_i = 1
+            for cur_node in self.iter_node():
+                if index_i == index:
+                    temp = cur_node.next_node
+                    cur_node.next_node = node
+                    node.next_node = temp
+                    self.length += 1
+                    return True
+                index_i += 1
+
+    # 删除任意节点(根据data确定位置)
     def del_node(self, data):
         if self.length == 0:
             raise Exception('length error')
@@ -89,6 +109,24 @@ class LinkList(object):
             per_node = self.head
             for cur_node in self.iter_node():
                 if cur_node.data == data:
+                    per_node.next_node = cur_node.next_node
+                    del cur_node
+                    self.length -= 1
+                    return True
+                else:
+                    per_node = cur_node
+
+    # 删除任意节点(根据索引index确定位置)
+    def del_node_index(self, index):
+        if self.length < index:
+            raise Exception('index error')
+        elif self.length == 0:
+            raise Exception('length error')
+        else:
+            index_i = 1
+            per_node = self.head
+            for cur_node in self.iter_node():
+                if index_i == index:
                     per_node.next_node = cur_node.next_node
                     del cur_node
                     self.length -= 1
@@ -124,5 +162,7 @@ if __name__ == '__main__':
     link_list.update_node(1, 7)
     link_list.update_node(2, 8)
     link_list.update_node(3, 9)
+    link_list.insert_index(1, 5)
+    link_list.del_node_index(1)
 
     print('链表长度：', len(link_list))
