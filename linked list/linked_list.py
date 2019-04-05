@@ -53,7 +53,7 @@ class LinkList(object):
             self.length += 1
             return True
 
-    # 生成器函数，会把每一个节点返回
+    # 返回每个节点
     def iter_node(self):
         if self.length == 0:
             raise Exception('length error')

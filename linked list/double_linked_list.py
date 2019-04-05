@@ -55,7 +55,7 @@ class DoubleLinkList(object):
         first_node.pre_node = node
         self.length += 1
 
-    # 生成器
+    # 返回每个节点
     def iter_node(self):
         cur_node = self.first_node()
         if cur_node is self.head:
