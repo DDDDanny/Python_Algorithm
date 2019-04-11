@@ -16,8 +16,12 @@ class Node(object):
 # 实现二叉树遍历
 class Traversing(object):
     def __init__(self):
-        self.root = Node()
+        # 初始化队列
         self.tree_queue = []
+        # 初始化节点数量
+        self.node_num = 0
+        # 树的深度
+        self.depth = 0
 
     # 先序遍历
     def prev_order(self, binary_tree=None):
@@ -43,9 +47,21 @@ class Traversing(object):
         self.over_order(binary_tree.right)
         print(binary_tree.data)
 
-    # 层次遍历
+    # 层次遍历(队列)
     def level_traversal(self, binary_tree=None):
-        pass
+        if binary_tree is None:
+            return False
+        node = binary_tree
+        self.tree_queue.append(node)
+        while self.tree_queue:
+            self.node_num += 1
+            node = self.tree_queue.pop(0)
+            print(node.data)
+            if node.left is not None:
+                self.tree_queue.append(node.left)
+            if node.right is not None:
+                self.tree_queue.append(node.right)
+        print('节点数量：', self.node_num)
 
 
 if __name__ == '__main__':
@@ -58,6 +74,8 @@ if __name__ == '__main__':
     bt.mid_order(tree)
     print('后序遍历')
     bt.over_order(tree)
+    print('层次遍历')
+    bt.level_traversal(tree)
 
 """
          A
