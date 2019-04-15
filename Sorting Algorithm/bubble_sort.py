@@ -17,9 +17,13 @@ class BubbleSort(object):
         # 统计长度
         cnt = len(self.arr)
         for i in range(cnt - 1):
+            flag = True
             for j in range(cnt - 1 - i):
                 if self.arr[j] > self.arr[j+1]:
+                    flag = False
                     self.arr[j], self.arr[j+1] = self.arr[j+1], self.arr[j]
+            if flag is True:
+                break
         print(self.arr)
 
     # 降序
@@ -29,14 +33,20 @@ class BubbleSort(object):
         # 统计长度
         cnt = len(self.arr)
         for i in range(cnt - 1):
+            flag = True
             for j in range(cnt - 1 - i):
                 if self.arr[j] < self.arr[j+1]:
+                    flag = False
                     self.arr[j], self.arr[j+1] = self.arr[j+1], self.arr[j]
+            if flag is True:
+                break
         print(self.arr)
 
 
 if __name__ == '__main__':
-    arr_list = [1, 3, 8, 2, 7, 6, 5, 4]
+    # arr_list = [1, 3, 8, 2, 7, 6, 5, 4]
+    # arr_list = [1, 2, 3, 4, 6, 5, 8, 7]
+    arr_list = [7, 8, 6, 5, 4, 3, 1, 2]
     num_list = BubbleSort(arr_list)
     num_list.sort_asc()
     num_list.sort_desc()
