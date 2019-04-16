@@ -22,7 +22,7 @@ class BubbleSort(object):
                 if self.arr[j] > self.arr[j+1]:
                     flag = False
                     self.arr[j], self.arr[j+1] = self.arr[j+1], self.arr[j]
-            if flag is True:
+            if flag:
                 break
         print(self.arr)
 
@@ -38,7 +38,7 @@ class BubbleSort(object):
                 if self.arr[j] < self.arr[j+1]:
                     flag = False
                     self.arr[j], self.arr[j+1] = self.arr[j+1], self.arr[j]
-            if flag is True:
+            if flag:
                 break
         print(self.arr)
 
