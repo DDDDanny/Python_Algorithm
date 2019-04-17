@@ -27,7 +27,7 @@ class ShellSort(object):
             flag //= 2
         print(self.arr)
 
-    # 升序
+    # 降序
     def sort_desc(self):
         if self.arr is None:
             return False
