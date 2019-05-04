@@ -26,5 +26,5 @@ def bfs(data, start):
 
 
 if __name__ == '__main__':
-    graph = {1: [2, 3], 2: [4, 5], 3: [6]}
-    bfs(graph, 1)
+    data_dict = {1: [2, 3], 2: [4, 5], 3: [6]}
+    bfs(data_dict, 1)
